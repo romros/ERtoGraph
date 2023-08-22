@@ -1,0 +1,163 @@
+{
+  "ENTITIES": [
+    {
+      "NAME": "Students",
+      "ATTRIBUTES": [
+        { "NAME": "SID", "TYPE": "ATOMIC", "KEY_TYPE": "PK", "IS_WEAK": false },
+        {
+          "NAME": "Name",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "FK",
+          "IS_WEAK": false
+        },
+        {
+          "NAME": "Semester",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "FK",
+          "IS_WEAK": true
+        }
+      ],
+      "IS_WEAK_ENTITY": false
+    },
+    {
+      "NAME": "Courses",
+      "ATTRIBUTES": [
+        { "NAME": "CID", "TYPE": "ATOMIC", "KEY_TYPE": "PK", "IS_WEAK": false },
+        {
+          "NAME": "Title",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "FK",
+          "IS_WEAK": false
+        },
+        { "NAME": "ECTS", "TYPE": "ATOMIC", "KEY_TYPE": "FK", "IS_WEAK": false }
+      ],
+      "IS_WEAK_ENTITY": false
+    },
+    {
+      "NAME": "Professors",
+      "ATTRIBUTES": [
+        {
+          "NAME": "Position",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "FK",
+          "IS_WEAK": false
+        }
+      ],
+      "IS_WEAK_ENTITY": false
+    },
+    {
+      "NAME": "Assistants",
+      "ATTRIBUTES": [],
+      "IS_WEAK_ENTITY": false
+    },
+    {
+      "NAME": "University Employees",
+      "ATTRIBUTES": [
+        { "NAME": "EID", "TYPE": "ATOMIC", "KEY_TYPE": "PK", "IS_WEAK": false },
+        {
+          "NAME": "Name",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "FK",
+          "IS_WEAK": false
+        },
+        {
+          "NAME": "Room Number",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "FK",
+          "IS_WEAK": false
+        }
+      ],
+      "IS_WEAK_ENTITY": false
+    }
+  ],
+  "RELATIONSHIPS": [
+    {
+      "NAME": "Attend",
+      "ENTITIES": [
+        { "NAME": "Students", "CARDINALITY": "N:M", "MIN_MAX_NOTATION": "0:N" },
+        { "NAME": "Courses", "CARDINALITY": "N:M", "MIN_MAX_NOTATION": "0:N" }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "NORMAL",
+      "IS_ASSOCIATIVE": false
+    },
+    {
+      "NAME": "Teach",
+      "ENTITIES": [
+        {
+          "NAME": "Professors",
+          "CARDINALITY": "1:N",
+          "MIN_MAX_NOTATION": "1:N"
+        },
+        { "NAME": "Courses", "CARDINALITY": "N:1", "MIN_MAX_NOTATION": "0:1" }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "NORMAL",
+      "IS_ASSOCIATIVE": false
+    },
+    {
+      "NAME": "Work For",
+      "ENTITIES": [
+        {
+          "NAME": "Assistants",
+          "CARDINALITY": "N:1",
+          "MIN_MAX_NOTATION": "0:1"
+        },
+        {
+          "NAME": "Professors",
+          "CARDINALITY": "1:N",
+          "MIN_MAX_NOTATION": "0:N"
+        }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "NORMAL",
+      "IS_ASSOCIATIVE": false
+    },
+    {
+      "NAME": "Prerequisite",
+      "ENTITIES": [
+        { "NAME": "Courses", "CARDINALITY": "N:1", "MIN_MAX_NOTATION": "0:1" },
+        { "NAME": "Courses", "CARDINALITY": "1:N", "MIN_MAX_NOTATION": "0:N" }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "NORMAL",
+      "IS_ASSOCIATIVE": false
+    },
+    {
+      "NAME": "Employee",
+      "ENTITIES": [
+        {
+          "NAME": "Professors",
+          "CARDINALITY": "1:1",
+          "MIN_MAX_NOTATION": "1:1"
+        },
+        {
+          "NAME": "University Employees",
+          "CARDINALITY": "1:1",
+          "MIN_MAX_NOTATION": "1:1"
+        }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "AGGREGATION",
+      "IS_ASSOCIATIVE": true
+    },
+    {
+      "NAME": "Employee",
+      "ENTITIES": [
+        {
+          "NAME": "Assistants",
+          "CARDINALITY": "1:1",
+          "MIN_MAX_NOTATION": "1:1"
+        },
+        {
+          "NAME": "University Employees",
+          "CARDINALITY": "1:1",
+          "MIN_MAX_NOTATION": "1:1"
+        }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "AGGREGATION",
+      "IS_ASSOCIATIVE": true
+    }
+  ]
+}

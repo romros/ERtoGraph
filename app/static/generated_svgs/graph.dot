@@ -1,0 +1,29 @@
+graph ConceptualModel {
+rankdir=LR;
+layout=neato;
+"STUDENT" [shape=box, label="STUDENT"];
+"SUBJECT" [shape=box, label="SUBJECT"];
+"PROFESSOR" [shape=box, label="PROFESSOR"];
+"STUDENT_ID" [shape=ellipse, style="", label=< <u>ID</u> >, width=0.5, height=0.3, fontsize="10"];
+"STUDENT" -- "STUDENT_ID" [dir=none];
+"STUDENT_Name" [shape=ellipse, style="", label=< Name >, width=0.5, height=0.3, fontsize="10"];
+"STUDENT" -- "STUDENT_Name" [dir=none];
+"STUDENT_DateOfBirth" [shape=ellipse, style="", label=< DateOfBirth >, width=0.5, height=0.3, fontsize="10"];
+"STUDENT" -- "STUDENT_DateOfBirth" [dir=none];
+"SUBJECT_Code" [shape=ellipse, style="", label=< <u>Code</u> >, width=0.5, height=0.3, fontsize="10"];
+"SUBJECT" -- "SUBJECT_Code" [dir=none];
+"SUBJECT_Title" [shape=ellipse, style="", label=< Title >, width=0.5, height=0.3, fontsize="10"];
+"SUBJECT" -- "SUBJECT_Title" [dir=none];
+"SUBJECT_Credits" [shape=ellipse, style="", label=< Credits >, width=0.5, height=0.3, fontsize="10"];
+"SUBJECT" -- "SUBJECT_Credits" [dir=none];
+"PROFESSOR_ID" [shape=ellipse, style="", label=< <u>ID</u> >, width=0.5, height=0.3, fontsize="10"];
+"PROFESSOR" -- "PROFESSOR_ID" [dir=none];
+"PROFESSOR_Name" [shape=ellipse, style="", label=< Name >, width=0.5, height=0.3, fontsize="10"];
+"PROFESSOR" -- "PROFESSOR_Name" [dir=none];
+"ENROLLED" [shape=diamond, style=filled, color=black, fillcolor=lightgrey, label="ENROLLED"];
+"STUDENT" -- "ENROLLED" [taillabel="N", dir=none];
+"ENROLLED" -- "SUBJECT" [headlabel="N", dir=none];
+"TEACHES" [shape=diamond, style=filled, color=black, fillcolor=lightgrey, label="TEACHES"];
+"PROFESSOR" -- "TEACHES" [taillabel="1", dir=none];
+"TEACHES" -- "SUBJECT" [headlabel="N", dir=none];
+}

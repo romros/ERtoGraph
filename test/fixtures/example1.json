@@ -1,0 +1,82 @@
+{
+  "ENTITIES": [
+    {
+      "NAME": "Student",
+      "ATTRIBUTES": [
+        { "NAME": "ID", "TYPE": "ATOMIC", "KEY_TYPE": "PK", "IS_WEAK": false },
+        {
+          "NAME": "Name",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "NONE",
+          "IS_WEAK": false
+        },
+        {
+          "NAME": "DateOfBirth",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "NONE",
+          "IS_WEAK": false
+        }
+      ],
+      "IS_WEAK_ENTITY": false
+    },
+    {
+      "NAME": "Subject",
+      "ATTRIBUTES": [
+        {
+          "NAME": "Code",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "PK",
+          "IS_WEAK": false
+        },
+        {
+          "NAME": "Title",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "NONE",
+          "IS_WEAK": false
+        },
+        {
+          "NAME": "Credits",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "NONE",
+          "IS_WEAK": false
+        }
+      ],
+      "IS_WEAK_ENTITY": false
+    },
+    {
+      "NAME": "Professor",
+      "ATTRIBUTES": [
+        { "NAME": "ID", "TYPE": "ATOMIC", "KEY_TYPE": "PK", "IS_WEAK": false },
+        {
+          "NAME": "Name",
+          "TYPE": "ATOMIC",
+          "KEY_TYPE": "NONE",
+          "IS_WEAK": false
+        }
+      ],
+      "IS_WEAK_ENTITY": false
+    }
+  ],
+  "RELATIONSHIPS": [
+    {
+      "NAME": "Enrolled",
+      "ENTITIES": [
+        { "NAME": "Student", "CARDINALITY": "N", "MIN_MAX_NOTATION": "0:N" },
+        { "NAME": "Subject", "CARDINALITY": "N", "MIN_MAX_NOTATION": "0:N" }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "NORMAL",
+      "IS_ASSOCIATIVE": false
+    },
+    {
+      "NAME": "Teaches",
+      "ENTITIES": [
+        { "NAME": "Professor", "CARDINALITY": "1", "MIN_MAX_NOTATION": "0:N" },
+        { "NAME": "Subject", "CARDINALITY": "N", "MIN_MAX_NOTATION": "0:N" }
+      ],
+      "ATTRIBUTES": [],
+      "RELATIONSHIP_TYPE": "NORMAL",
+      "IS_ASSOCIATIVE": false
+    }
+  ]
+}

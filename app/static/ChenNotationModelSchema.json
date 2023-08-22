@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Chen Notation Model",
+  "type": "object",
+  "properties": {
+    "ENTITIES": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "NAME": {
+            "type": "string"
+          },
+          "ATTRIBUTES": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "NAME": {
+                  "type": "string"
+                },
+                "TYPE": {
+                  "type": "string",
+                  "enum": ["ATOMIC", "COMPOSITE", "DERIVED", "MULTIVALUED"]
+                },
+                "KEY_TYPE": {
+                  "type": "string",
+                  "enum": ["PK", "FK"]
+                },
+                "IS_WEAK": {
+                  "type": "boolean"
+                }
+              },
+              "required": ["NAME", "TYPE", "KEY_TYPE", "IS_WEAK"]
+            }
+          },
+          "IS_WEAK_ENTITY": {
+            "type": "boolean"
+          }
+        },
+        "required": ["NAME", "ATTRIBUTES", "IS_WEAK_ENTITY"]
+      }
+    },
+    "RELATIONSHIPS": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "NAME": {
+            "type": "string"
+          },
+          "ENTITIES": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "NAME": {
+                  "type": "string"
+                },
+                "CARDINALITY": {
+                  "type": "string",
+                  "enum": ["1:1", "1:N", "N:1", "N:M"]
+                },
+                "MIN_MAX_NOTATION": {
+                  "type": "string",
+                  "pattern": "^[0-9]+:[0-9]+$"
+                }
+              },
+              "required": ["NAME", "CARDINALITY", "MIN_MAX_NOTATION"]
+            }
+          },
+          "ATTRIBUTES": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "NAME": {
+                  "type": "string"
+                },
+                "TYPE": {
+                  "type": "string",
+                  "enum": ["ATOMIC", "COMPOSITE", "DERIVED", "MULTIVALUED"]
+                },
+                "KEY_TYPE": {
+                  "type": "string",
+                  "enum": ["PK", "FK"]
+                },
+                "IS_WEAK": {
+                  "type": "boolean"
+                }
+              },
+              "required": ["NAME", "TYPE", "KEY_TYPE", "IS_WEAK"]
+            }
+          },
+          "RELATIONSHIP_TYPE": {
+            "type": "string",
+            "enum": ["NORMAL", "SPECIALIZATION", "AGGREGATION"]
+          },
+          "IS_ASSOCIATIVE": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "NAME",
+          "ENTITIES",
+          "ATTRIBUTES",
+          "RELATIONSHIP_TYPE",
+          "IS_ASSOCIATIVE"
+        ]
+      }
+    }
+  },
+  "required": ["ENTITIES", "RELATIONSHIPS"]
+}
